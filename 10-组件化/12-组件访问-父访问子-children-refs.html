@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <cpn></cpn>
+  <cpn ref="test"></cpn>
+  <cpn ref="test1"></cpn>
+  <button @click="btnClick">按钮</button>
+</div>
+
+<template id="cpn">
+  <div>我是子组件</div>
+</template>
+
+<script src="../js/vue.js">
+</script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    components: {
+      'cpn': {
+        template: '#cpn',
+        methods: {
+          showMessage() {
+            console.log('子组件方法');
+          }
+        }
+      }
+    },
+    methods: {
+      btnClick() {
+        //返回的是数组,用的比较少，除非是要拿到所有组件，否则都推荐使用ref精准拿到子组件
+        console.log(this.$children);
+        this.$children[0].showMessage();
+        //返回的是对象，属性名为元素上定义的ref属性的值
+        console.log(this.$refs);
+        console.log(this.$refs.test);
+      }
+    }
+  });
+</script>
+</body>
+</html>

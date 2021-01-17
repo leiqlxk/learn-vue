@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //1.创建组件构造器
+  //Vue.extend()
+  const myCompoonent = Vue.extend({
+    template:
+        <div>
+          <h2>组件标题</h2>
+          <p>我是组件中的一个段落内容</p>
+        </div>
+  });
+  //2.注册组件
+  // Vue.component()
+  Vue.component('my-cpn', myCompoonent);
+  //3.在Vue实例范围内使用组件
+  // <my-cpn></my-cpn>
+
+  //父组件通过props向子组件传递数据
+  //子组件通过事件来向父组件通信
+</script>
+</body>
+</html>

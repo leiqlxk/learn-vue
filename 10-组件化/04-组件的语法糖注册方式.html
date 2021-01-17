@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn1></cpn1>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  //子组件
+/*  const cpn1 = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题1</h2>
+        <p>我是内容，哈哈哈</p>
+      </div>`
+  });*/
+
+  //语法糖注册全局组件，实际上内部还是会调用extend方法
+  /*Vue.component(cpn1, {
+    template: `
+      <div>
+        <h2>我是标题1</h2>
+        <p>我是内容，哈哈哈</p>
+      </div>`
+  });*/
+
+  //看当成默认的顶层父组件，即root
+  const app = new Vue({
+    el: "#app",
+    components: {
+      //语法糖注册局部组件
+      cpn1: {
+        template: `
+      <div>
+        <h2>我是标题1</h2>
+        <p>我是内容，哈哈哈</p>
+      </div>`
+      }
+    }
+  });
+</script>
+</body>
+</html>

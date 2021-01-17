@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2 :class="active">{{message}}</h2>
+    <!--    <h2 :class="{key: boolean, key: boolean, 类名: 布尔值}"></h2> 动态绑定可以与写死的class共存，同时对象也可以放在方法或者计算属性中生成-->
+    <h2 class="title" :class="{active: isActive}">{{message}}</h2>
+    <h2 class="title" :class="getClass()">{{message}}</h2>
+    <button v-on:click="btnClick">按钮</button>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        active: 'active',
+        isActive: true
+      },
+      methods: {
+        btnClick: function () {
+          this.isActive = !this.isActive;
+        },
+        getClass: function () {
+          return {active: this.isActive, online: this.isOnline};
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

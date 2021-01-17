@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  <cpn :cmovies="movies" :cmessage="message"></cpn>-->
+  <cpn :cmovies="movies"></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <p>{{cmovies}}</p>
+    <h2>{{cmessage}}</h2>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  //父传子：props
+  const cpn = {
+    template: '#cpn',
+    //数组写法
+    // props: ['cmovies', 'cmessage'],
+    //对象写法
+    props: {
+      //1.类型限制
+     /* cmovies: Array,
+      cmessage: String*/
+
+      //2.类型（类型也可以为自定义类型）及默认值、及必传校验
+      cmovies: {
+        type: Array,
+        //2.5.17以下没问题，否则会报错
+        // default: [],
+        //高版本对象和数组必须使用函数
+        default() {
+          return [];
+        },
+        required: true
+      },
+      cmessage: {
+        //多种类型也可以使用数组
+        type: [String, Number],
+        default: 'aaaa',
+        //自定义校验
+        /*validator(value) {
+          return Boolean;
+        }*/
+      }
+    },
+    data() {return{}},
+    methods: {}
+
+  }
+
+  const app = new Vue({
+    el: '#app',
+    components: {
+      cpn
+    },
+    data() {
+      return {
+        message: '你好啊',
+        movies: ['a', 'b', 'c']
+      };
+    }
+  });
+</script>
+</body>
+</html>

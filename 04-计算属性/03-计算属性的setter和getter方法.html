@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{fullName}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      firstName: 'Lebron',
+      lastName: 'James'
+    },
+    computed: {
+      // fullName: function () {
+      //   return this.firstName + ' ' + this.lastName;
+      // }
+      //相当于在computed对象里定义了一个属性，属性名：属性值
+      //如： name: 'sfasdfdas'
+      //完全体实际为定义一个属性，并且这个属性是一个对象，我们默认调用了这个对象的getter方法,正常情况下我们也只写get方法，
+      // 因为我们不希望别人给计算属性乱塞值，所以一般set方法就放空不写，使该属性成为只读属性
+      fullName: {
+        get: function () {
+          return this.firstName + ' ' + this.lastName;
+        },
+        set: function (newVlaue) {
+          console.log(newVlaue);
+          let names = newVlaue.split(" ");
+          this.firstName = names[0];
+          this.lastName = names[1];
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

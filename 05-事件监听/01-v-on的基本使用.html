@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  //事件监听可以传入表达式或者函数，参数为event
+  <h2>{{counter}}</h2>
+  //表达式
+<!--  <button v-on:click="counter++">+</button>
+  <button v-on:click="counter&#45;&#45;">-</button>-->
+
+  //函数
+  <button v-on:click="increment">+</button>
+  <button v-on:click="decrement">-</button>
+
+  //语法糖
+  <button @:click="increment">+</button>
+  <button @:click="decrement">-</button>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        counter: 0
+      },
+      methods: {
+        increment() {
+          this.counter++;
+        },
+        decrement() {
+          this.counter--;
+        }
+      }
+    });
+  </script>
+</div>
+</body>
+</html>

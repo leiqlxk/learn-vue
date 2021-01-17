@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  父组件监听自定义事件，接受方法不写参数默认会传递参数，
+自定义事件并没有event对象-->
+  <cpn @item-click="itemClick"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <button v-for="item in categories" :key="item.id" @click="btnClick(item)">
+      {{item.name}}
+    </button>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const cpn = {
+    template: '#cpn',
+    data() {
+      return {
+        categories: [
+          {id: 1, name: '热门推荐'},
+          {id: 2, name: '手机数码'},
+          {id: 3, name: '家用电器'},
+          {id: 4, name: '电脑办公'}
+        ],
+      };
+    },
+    methods: {
+      btnClick(item) {
+        //发射自定义事件跟父组件通信
+        this.$emit('item-click', item);
+      }
+    }
+  }
+  const app = new Vue({
+    el: '#app',
+    components: {
+      cpn
+    },
+    data() {
+      return {
+      }
+    },
+    methods: {
+      itemClick(item) {
+        console.log(item);
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  在遍历过程中不使用索引值-->
+  <ul>
+    <li v-for="item in movices">{{item}}</li>
+  </ul>
+
+<!--  在遍历过程中获取索引值-->
+  <ul>
+    <li v-for="(item, index) in movices">{{index + 1}}.{{item}}</li>
+  </ul>
+</div>
+
+<script src="../js/vue.js">
+</script>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      movices: ['a', 'b', 'c']
+    }
+  });
+</script>
+</body>
+</html>

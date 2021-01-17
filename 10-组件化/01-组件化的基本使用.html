@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <my-cpn></my-cpn>
+  <my-cpn></my-cpn>
+  <my-cpn></my-cpn>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  //组件必须是单根的
+  const cpnC = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题</h2>
+        <p>我是内容，哈哈哈</p>
+        <p>我是内容，呵呵呵</p>
+      </div>`
+  });
+
+  Vue.component('my-cpn', cpnC);
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+
+    }
+  });
+</script>
+</body>
+</html>

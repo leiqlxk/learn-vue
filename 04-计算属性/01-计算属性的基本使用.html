@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{firstName + ' ' + lastName}}</h2>
+  <h2>{{firstName}} {{lastName}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <h2>{{fullName}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  //计算属性相较于方法的优势在于，其有缓存，只要属性不变多次调用它也不会再进行计算，而是直接返回，方法每调一次则会执行一次计算
+  //正常情况下，我们只使用到计算属性的get方法，其还有set方法
+  let app = new Vue({
+    el: '#app',
+    data: {
+      firstName: 'Lebron',
+      lastName: 'James'
+    },
+    computed: {
+      fullName: function () {
+        return this.firstName + ' ' + this.lastName;
+      }
+    },
+    methods: {
+      getFullName: function () {
+        return this.firstName + ' ' + this.lastName;
+      }
+    }
+  });
+</script>
+</body>
+</html>

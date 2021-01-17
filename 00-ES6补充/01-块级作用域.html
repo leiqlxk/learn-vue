@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+
+<script>
+
+  //ES6之前没有块级作用域，所以必须借用function的作用域来实现块级作用域
+  //ES6加入了let和const，其加入了块级作用域
+  //1.变量作用域：变量在什么范围内是可用的
+  //var没有块级作用域
+  {
+    var name = 'why';
+    console.log(name);
+  }
+
+  console.log(name);
+
+  //2.没有块级作用域引起的问题: if块级
+  //造成混乱
+  var func;
+  if (true) {
+    var name1 = 'why';
+
+    func = function () {
+      console.log(name1);
+    }
+
+    name1 = 'Kobe';
+    func();
+  }
+
+  func();
+
+  //3.没有块级作用域引起的问题: for块级
+  //永远是最后一个赋值
+  var btns = document.getElementsByTagName('button');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '个按钮被点击');
+    })
+  }
+
+  //ES6之前使用闭包解决上述问题：函数是一个作用域
+  for (var j = 0; j < btns.length; j++) {
+    (function (num) {
+      btns[num].addEventListener('click', function () {
+        console.log('第' + num + '个按钮被点击');
+      })
+    })(j)
+  }
+
+  //ES6
+  for (let j = 0; j < btns.length; j++) {
+    btns[j].addEventListener('click', function () {
+      console.log('第' + j + '个按钮被点击');
+    })
+  }
+</script>
+</body>
+</html>

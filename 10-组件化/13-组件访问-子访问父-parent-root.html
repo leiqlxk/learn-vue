@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <ccpn></ccpn>
+  </div>
+</template>
+
+<template id="ccpn">
+  <div>我是子组件
+    <button @click="btnClick">按钮</button>
+  </div>
+</template>
+
+<script src="../js/vue.js">
+</script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    components: {
+      'cpn': {
+        template: '#cpn',
+        components: {
+          ccpn: {
+            template: '#ccpn',
+            methods: {
+              btnClick() {
+                //一般不推荐使用，因为组件内最好不要和父组件有耦合
+                console.log(this.$parent);
+
+                //访问根组件，这里就是vue实例
+                console.log(this.$root);
+              }
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

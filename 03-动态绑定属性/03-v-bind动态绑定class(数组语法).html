@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2 :class="['active', 'online']">{{message}}</h2>
+    <h2 :class="[active, online]">{{message}}</h2>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        active: 'aaaa',
+        online: 'bbbb'
+      }
+    });
+  </script>
+</body>
+
+</html>

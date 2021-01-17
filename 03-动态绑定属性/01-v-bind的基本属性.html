@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <img v-bind:src="url"/>
+    <a :href="baiduUrl">百度一下</a>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    //v-bind:动态绑定属性,语法糖为:
+    let app = new Vue({
+      el: '#app',
+      data: {
+        url: 'https://img12.360buyimg.com/seckillcms/s140x140_jfs/t1/152720/15/13625/52775/5ff58be4Ebdeb2af9/1a2731702141f0c4.jpg.webp',
+        baiduUrl: 'http://www.baidu.com'
+      }
+    });
+  </script>
+</body>
+</html>

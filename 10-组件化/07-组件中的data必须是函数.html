@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!-- 当多处使用组件时，由于组件的data是一个函数，则每次调用时返回一个对象，这样就能使每个使用组件的地方都有一份属于自己的数据，
+      如果，data不是函数的话，则会导致多个组件会共享同一份数据-->
+  <cpn></cpn>
+  <cpn></cpn>
+  <cpn></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>当前计数：{{counter}}</h2>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  //注册全局
+  Vue.component('cpn', {
+    template: '#cpn',
+    data() {
+      return {
+        counter: 0
+      }
+    },
+    methods: {
+      increment() {
+        this.counter++;
+      },
+      decrement() {
+        this.counter--;
+      }
+    }
+  });
+
+  //实际上组件的原型也指向的是Vue，所以在组件内部一样也有data，methods，生命周期函数等内容
+  const app = new Vue({
+    el: "#app"
+  });
+</script>
+</body>
+</html>

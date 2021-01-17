@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active {
+      color: red
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="(item, index) in movices" @click="clickLi(index)" :class="{'active': activeIndex === index}">{{index}}-{{item}}</li>
+  </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      movices: ['火影忍者', '海贼王', '进击的巨人', '海尔兄弟'],
+      activeIndex: null
+    },
+    methods: {
+      clickLi: function (index) {
+        this.activeIndex = index;
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>{{title}}</h2>
+    <p>我是内容，哈哈哈</p>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  //实际上组件的原型也指向的是Vue，所以在组件内部一样也有data，methods，生命周期函数等内容
+  const app = new Vue({
+    el: "#app",
+    components: {
+      'cpn': {
+        template: '#cpn',
+        data() {
+          return {
+            title: 'abc'
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

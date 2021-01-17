@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    <input type="text" v-model="message">-->
+<!--  实际上v-model相当于:value(单向绑定)加上事假监听@change-->
+<!--  <input type="text" :value="message" @input="valueChange">-->
+  <input type="text" :value="message" @input="message = $event.target.value">
+  {{message}}
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  //v-model使用于绑定表单控件，并且实现了双向绑定
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊'
+    },
+    methods: {
+      valueChange(event) {
+        this.message = event.target.value;
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

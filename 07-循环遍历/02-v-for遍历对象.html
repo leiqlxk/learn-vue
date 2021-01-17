@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  在遍历的过程中，如果只获取一个值，默认是获取value-->
+  <ul>
+    <li v-for="item in userInfo">{{item}}</li>
+  </ul>
+
+<!--  获取value和key-->
+  <ul>
+    <li v-for="(value, key) in userInfo">{{key}}:{{value}}</li>
+  </ul>
+
+<!--  获取key、value和index-->
+  <ul>
+    <li v-for="(value, key, index) in userInfo">{{index + 1}}-{{key}}:{{value}}</li>
+  </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  //v-for官方推荐使用时给元素或组件添加:key属性，以便vdom更好的复用已经存在的元素节点
+  //没加key的话会使用低效模式从数组替换的位置开始全部替换，而加了key的话vdom只会在插入位置创建一个新的节点，然后再通过diff算法跟页面去比对只新增了一个dom节点，别的节点会直接复用
+  //key推荐使用唯一值，即key和内容一一对应，而不是使用index作为key
+  //当以数组为下标的index作为key值时，其中一个元素(例如增删改查)发生了变化就有可能导致所有的元素的key值发生改变
+  //diff算法时比较同级之间的不同，以key来进行关联，当对数组进行下标的变换时，比如删除第一条数据，那么以后所有的index都会发生改变，
+  // 那么key自然也跟着全部发生改变，所以index作为key值是不稳定的，而这种不稳定性有可能导致性能的浪费，导致diff无法关联起上一次一样的数据。因此，能不使用index作为key就不使用index。
+  const app = new Vue({
+    el: '#app',
+    data: {
+      userInfo: {
+        name: 'james',
+        age: 18,
+        height: 1.98
+      }
+    }
+  });
+</script>
+</body>
+</html>
