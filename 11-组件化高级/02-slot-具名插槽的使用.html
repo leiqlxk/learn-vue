@@ -7,26 +7,21 @@
 <body>
 <div id="app">
   <cpn>
-    <button>按钮</button>
-  </cpn>
-  <cpn>
-    <h2>哈哈哈</h2>
-  </cpn>
-  <cpn>
+    <span slot="center">标题</span>
   </cpn>
 </div>
 
 <template id="cpn">
   <div>
-    我是组件
-<!--    插槽可以给默认值，父组件有指定显示指定的，没指定使用默认-->
-    <slot><button>按钮</button></slot>
+<!--    slot有名字时，使用的时候必须指定替换哪个，否则不会完成替换-->
+    <slot name="left"><span>左边</span></slot>
+    <slot name="center"><span>中间</span></slot>
+    <slot name="right"><span>右边</span></slot>
   </div>
 </template>
 
 <script src="../js/vue.js"></script>
 <script>
-//插槽使组件拥有扩展性，显示内容可以自定义
   const app = new Vue({
     el: '#app',
     components: {

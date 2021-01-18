@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--父组件替换插槽的标签，但内容由子组件来提供-->
+<div id="app">
+  <cpn></cpn>
+  <cpn>
+    <span>javascript-</span>
+    <span>c++-</span>
+  </cpn>
+
+  <cpn>
+<!--    目的是获取子组件中的planguages，在2.5.*一下必须要用template，高版本不需要-->
+    <template  slot-scope="slot">
+      <span v-for="item in slot.data">{{item}}-</span>
+    </template>
+  </cpn>
+
+  <cpn>
+    <template slot-scope="slot">
+      <span>{{slot.data.join("*")}}</span>
+    </template>
+  </cpn>
+</div>
+
+<template id="cpn">
+  <div>
+<!--    通过data传给使用的地方,data的名字可以自定义-->
+    <slot :data="planguages">
+      <ul>
+        <li v-for="item in planguages"> {{item}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    components: {
+      cpn: {
+        template: '#cpn',
+        data() {
+          return {
+            planguages: ['javascript', 'java', 'c++', 'c#', 'go', 'swift']
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

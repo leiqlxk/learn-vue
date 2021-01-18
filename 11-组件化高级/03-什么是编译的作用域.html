@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  编译的时候不会关心使用的是组件还是普通html标签，他只关心标签在哪个模板里，这里的模板出现在了app的模板里，所以会去app的实例中查找变量，不会去组件的作用域里查找-->
+  <cpn v-show="isShow"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>我是子组件</h2>
+    <p>我是内容</p>
+<!--    此处模板属于组件内，所以变量是去组件中找-->
+    <button v-show="isShow">按钮</button>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data() {
+      return {
+        isShow: true
+      };
+    },
+    components: {
+      'cpn': {
+        template: '#cpn',
+        data() {
+          return{
+            isShow: false
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
