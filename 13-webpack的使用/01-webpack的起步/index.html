@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--src为源文件目录，dist为编译打包目录-->
+<!--正常引用-->
+<!--<script src="./src/main.js"></script>-->
+<!--在这里我们再main中使用了CommonJs的内容，浏览器等并不支持，所以我们需要用到认识他的打包工具进行
+打包处理成浏览器认识的代码，并处理好依赖关系进行引用-->
+<!--webpack ./src/main.js ./dist/bundle.js
+-->
+<!--手工引用-->
+<script src="./dist/bundle.js"></script>
+</body>
+</html>

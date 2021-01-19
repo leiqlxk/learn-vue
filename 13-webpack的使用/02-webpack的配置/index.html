@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--当使用了webpack配置后就不用手动在webpack命令后加上路径了，直接webpack就会打包，因为所需路径都在配置文件中了。
+并且我们通常也不使用webpack，而是让npm run build在package.json中来与之对应
+-->
+<!--在package.json中配置脚本会优先找本地的环境，也就是局部的环境而不是去找全局的，正常来说每个项目都应该要安装一个局部的webpack环境，否则容易出现webpack不一致的情况-->
+<script src="./dist/bundle.js"></script>
+</body>
+</html>
