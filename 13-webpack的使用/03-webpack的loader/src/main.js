@@ -20,4 +20,9 @@ console.log(height);
 //loader的使用步骤为：
 //1.通过npm安装需要使用的loader
 //2.在webpack.config.js中的module关键字下进行配置
+
 require('./css/normal.css');
+
+require('./css/special.less');
+
+document.writeln('<h2>你好啊,webpack</h2>')
