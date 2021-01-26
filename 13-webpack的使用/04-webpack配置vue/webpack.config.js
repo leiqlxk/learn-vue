@@ -63,11 +63,17 @@ module.exports = {
             presets: ['es2015']
           }
         }
+      },
+      {
+        test: /\.vue$/,
+        use: ['vue-loader']
       }
     ]
   },
   //配置runtime-compiler
   resolve: {
+    //配置import的时候不想写的扩展名
+    extensions: ['.js', '.css', '.vue'],
     alias: {
       // 配置我们import的vue具体指向的文件，vue.esm.js中包含了compiler，默认指向的是vue.runtime.js
       'vue$': 'vue/dist/vue.esm.js'

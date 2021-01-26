@@ -30,10 +30,8 @@ document.writeln('<h2>你好啊,webpack</h2>')
 //使用Vue进行开发
 //在npm install vue后在node_modules中就用vue的引用了，并且其通过export default Vue导出
 import Vue from 'vue';
-
-new Vue({
-  el: '#app',
-  //vue在编译的时候会把template中的内容去替换el挂载的div
+//组件抽出来其实就是一个对象，从而可以使用第三种方式，从一个js中导入进来
+/*const App = {
   template: `
     <div>
       <h2>{{message}}</h2>
@@ -43,5 +41,25 @@ new Vue({
     return {
       message: '哈哈哈哈'
     }
+  }
+}*/
+
+//3.使用import导入
+// import App from './vue/app'
+
+//4.js和模板分离,.vue格式要有对应的loader  vue-loader  vue-template-compiler
+import App from './vue/App.vue';
+new Vue({
+  el: '#app',
+  //1.使用template替换el，vue在编译的时候会把template中的内容去替换el挂载的div
+ /* template: `
+    <div>
+      <h2>{{message}}</h2>
+    </div>
+  `,*/
+  //2.使用组件抽离
+  template: '<App/>',
+  components: {
+    App
   }
 });
