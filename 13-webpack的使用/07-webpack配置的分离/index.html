@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--vue在构建最终发布版本的时候，构建了两类版本，一个是runtime-only，一个是runtime-compiler-->
+<!--在runtime-only时，代码中不可有任何的template-->
+<!--使用runtime-compiler时，代码中可以有template，因为compiler可以用于编译template-->
+<!--正常单页面富应用（sp）就这一个html作为入口，且什么内容都没有，使用路由跳转-->
+<div id="app">
+</div>
+<!--在模块化项目中，除了js以外css、less等我们都当成模块来使用，都希望统一打包到bundle中统一引用-->
+<!--html打包插件会自动插入，不需要手动插入-->
+<!--<script src="./dist/bundle.js"></script>-->
+</body>
+</html>
