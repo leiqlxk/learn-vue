@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //什么时候使用箭头函数
+  //当一个函数作为另一个函数的参数时
+  //这两个打印的都是window
+  setTimeout(function () {
+    console.log(this)
+  }, 1000)
+  setTimeout(() => {
+    console.log(this)
+  })
+
+  //问题：箭头函数中的this是如何查找的
+  //答案：向外层作用域一层层查找this，直到有this的定义
+  const obj = {
+    aaa() {
+      setTimeout(function (){
+        //正常函数是通过call来调用，window会被当成第一个参数传进去
+        console.log(this)
+      })
+    },
+    bbb() {
+      setTimeout(() => {
+        //箭头函数并不是通过call
+        console.log(this)
+      })
+    }
+  }
+
+  obj.aaa();
+  obj.bbb();
+</script>
+</body>
+</html>
