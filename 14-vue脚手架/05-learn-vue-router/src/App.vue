@@ -5,6 +5,10 @@
 <!--    <router-link to="/home" tag="button" replace active-class="active">首页</router-link> 即使用active修改默认的router-link-active，这个也可以再router实例上批量修改-->
     <router-link to="/home" tag="button" replace>首页</router-link>
     <router-link to="/about" tag="button">关于</router-link>
+<!--    动态路由-->
+    <router-link :to="'/user/' + userId">用户</router-link>
+<!--    query方式传递参数及get形式，其实router-vue的to可以是对象形式包含path和query，只是其他不用传参就没必要写成对象形式-->
+    <router-link :to="{path: '/profile', query: {userName: 'zhangsan', age: 14}}">档案</router-link>
     <button @click="homeClick">首页</button>
     <button @click="aboutClick">首页</button>
     <button>关于</button>
@@ -16,6 +20,11 @@
 <script>
 export default {
   name: 'App',
+  data() {
+    return {
+      userId: 'lisi'
+    }
+  },
   methods: {
     homeClick() {
       //通过代码的方式修改路由,其实内部使用的就是history.pushState
@@ -32,4 +41,7 @@ export default {
 </script>
 
 <style>
+.active {
+  color: red;
+}
 </style>

@@ -9,14 +9,3 @@
     history.replace()也能改变url而不刷新页面，但是其只是简单替换，而没有pushState的出入栈操作，即不管是back()方法还是浏览器的返回按钮都是无效的。    
 ![img_19.png](img_19.png)    
     但使用go()方法可以跳转到指定的页面但必须使用的是pushState，replaceState情况下是无效的，go方法参数不仅仅只能是负数，也能用负数。
-## vue的Router
-    vue的Router默认的就是使用hash的方式，可以通过配置实现history模式。
-    目前流行的三大框架都有自己的路由实现：
-        1. Angular的ngRouter
-        1. React的ReactRouter
-        1. Vue的vue-router
-    vue-router是基于路由和组件的：
-        1. 路由用于设定访问路径，将访问路径和组件映射起来
-        1. 在vue-router的单页面应用中，页面的路径改变就是组件的切换
-## vue-router使用    
-![img_21.png](img_21.png)
