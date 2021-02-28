@@ -10,4 +10,5 @@
     1. 商品的收藏、购物车中的物品等等，都是需要在多个页面共享的内容
 ## Vuex状态管理图例
 ![img.png](img.png)
-    引用state中内容时直接引用，当修改的时候需dispatch到actions后在commit到mutations中修改state，按这种方式修改state中内容那么Devtools就可以跟踪state的变化
+    引用state中内容时直接引用，当修改的时候需dispatch到actions后在commit到mutations中修改state，按这种方式修改state中内容那么Devtools就可以跟踪state的变化。
+actions处理异步操作，mutations处理同步操作
