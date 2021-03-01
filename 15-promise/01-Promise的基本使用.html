@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //正常情况下都是同步的顺序执行
+  const name = 'why';
+  console.log(name);
+  const result = 3 + 5;
+
+  //我们在网络请求时，我们一般会使用异步操作
+  //以下为一个夸张的案例，如果使用ajax的回调嵌套的话，有可能会产生地狱回调
+ /* $.ajax('url1', function (data1) {
+    $.ajax('url2', function (data2) {
+      $.ajax('url3', function (data3) {
+        $.ajax('url4', function (data4) {
+          console.log(data4);
+        })
+      })
+    })
+  })*/
+
+  //从es6开始我们可以使用Promise来改进，Promise是异步编程的一种解决方案
+  //1.使用setTimeout模拟异步
+  setTimeout(() => {
+    let data = 'Hello World'
+    console.log(data);
+  }, 1000)
+
+  //2.使用Promise,参数 -> 函数(resolve, reject)
+  //resolve和reject本身也是函数
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      //成功时回调resolve函数，只要调用resolve函数就会执行then函数
+      resolve("haha")
+    }, 1000)
+  }).then((data) => {
+    let data1 = 'Hello Promise'
+    console.log(data);
+    console.log(data1);
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        //只要调用resolve函数就会执行then函数
+        resolve()
+      }, 1000)
+    }).then(() => {
+      let data = 'Hello Promise1'
+      console.log(data);
+    })
+  })
+
+  //失败时执行reject
+  new Promise(((resolve, reject) => {
+    setTimeout(() => {
+      //失败时调用reject函数就会进入catch函数
+      reject("error message")
+    }, 1000)
+  })).catch(err => {
+    console.log(err);
+  })
+
+  //Promise中有三种状态：
+  //1.当Promise中发起异步操作后就进入了pedding状态
+  //2.当异步操作成功后就进入满足状态（fulfill），当我们主动回调了resolve时就处于该状态，并且会回调.then()
+  //3.当我们主动回调了reject时，就处于决绝状态（reject），并且会回调.catch()
+</script>
+</body>
+</html>

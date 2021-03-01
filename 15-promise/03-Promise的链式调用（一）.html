@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      //成功时回调resolve函数，只要调用resolve函数就会执行then函数
+      resolve("haha")
+    }, 1000)
+  }).then((data) => {
+    let data1 = 'Hello Promise'
+    console.log(data);
+    console.log(data1);
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        //只要调用resolve函数就会执行then函数
+        resolve()
+      }, 1000)
+    }).then(() => {
+      let data = 'Hello Promise1'
+      console.log(data);
+    })
+  })
+</script>
+</body>
+</html>

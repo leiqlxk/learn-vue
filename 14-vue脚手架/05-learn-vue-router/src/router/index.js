@@ -9,7 +9,7 @@ import User from '@/components/User';
 Vue.use(Router);
 
 // 2. 创建路由对象并通过export default导出
-export default new Router({
+const router = new Router({
   //配置路由和组件之间的应用关系
   routes: [
     {
@@ -26,6 +26,13 @@ export default new Router({
       name: 'Home',
       //路由懒加载
       component: () => import('@/components/Home'),
+      meta: {
+        title: '首页'
+      },
+      beforeEnter: ((to, from, next) => {
+        console.log('独享守卫');
+        next();
+      }),
       children: [
         {
           path: '',
@@ -63,3 +70,16 @@ export default new Router({
   // 修改router-link的默认激活样式
   linkActiveClass: 'active'
 });
+
+//全局导航守卫，前置钩子即跳转之前回调
+router.beforeEach((to, from, next) => {
+  document.title = to.matched[0].meta.title;
+  console.log('+++++++++');
+  next();
+})
+
+//后置钩子，即页面跳转完成后回调
+router.afterEach((to, from) => {
+  console.log('------------');
+})
+export default router;

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //两个异步请求都完成才会执行then
+  Promise.all([new Promise((resolve, reject) => {
+    $ajax({
+
+    })
+  }),
+  new Promise((resolve, reject) => {
+    $.ajax({
+
+    })
+  })]).then(results => {
+    console.log(results);
+  })
+</script>
+</body>
+</html>
