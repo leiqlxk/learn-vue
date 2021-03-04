@@ -70,7 +70,7 @@ export function request3(config) {
   })
 
   //发送真正的网络请求
-  return instance(config.baseConfig)
+  return instance(config)
 }
 
 
@@ -83,7 +83,7 @@ export function request4(config) {
   })
 
   //发送真正的网络请求
-  return instance(config.baseConfig)
+  return instance(config)
 }
 
 //拦截请求
