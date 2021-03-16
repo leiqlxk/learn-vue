@@ -8,4 +8,4 @@
 ![img_18.png](img_18.png)    
     history.replace()也能改变url而不刷新页面，但是其只是简单替换，而没有pushState的出入栈操作，即不管是back()方法还是浏览器的返回按钮都是无效的。    
 ![img_19.png](img_19.png)    
-    但使用go()方法可以跳转到指定的页面但必须使用的是pushState，replaceState情况下是无效的，go方法参数不仅仅只能是负数，也能用负数。
+    但使用go()方法可以跳转到指定的页面但必须使用的是pushState，replaceState情况下是无效的，go方法参数不仅仅只能是负数，也能用正数。
