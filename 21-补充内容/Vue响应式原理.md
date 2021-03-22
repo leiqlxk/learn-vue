@@ -1,5 +1,5 @@
 ![img_2.png](img_2.png)         
-1. app.message修改数据时，vue内部是如果监听message数据的改变
+1. app.message修改数据时，vue内部是如何监听message数据的改变
    * Object.defineProperty -> 监听对象属性的改变
 ```javascript
 // 相当于通过new Vue中的data传进来的对象
@@ -39,7 +39,7 @@ Object.keys(obj).forEach(key => {
   })
 })
 ```
-1. 当数据发生改变，Vue是如果通知哪些人，界面发生刷新
+1. 当数据发生改变，Vue是如何通知哪些人，界面发生刷新
     * 发布订阅者模式
 ```javascript
 // 发布者
