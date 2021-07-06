@@ -35,7 +35,7 @@ export function Person() {
 
 
 //export default:上面的三种方式导出的时候都已命名，而有的时候我们并不想在导出的时候给他名字，而是导入的时候给他起名字
-//一个模块只能右移个export default
+//一个模块只能有一个export default
 /*const address = '北京市';
 export default address;*/
 
