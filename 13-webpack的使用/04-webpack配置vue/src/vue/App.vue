@@ -6,7 +6,7 @@
 </template>
 
 <script>
-//组件引用组件，则形成了组件数
+//组件引用组件，则形成了组件树
 import Cpn from "./Cpn.vue";
 export default {
   name: "App",

@@ -94,7 +94,7 @@ module.exports = {
 
       //新增的.npmrc文件的作用为在项目的根目录中包含该文件并且改文件配有registry，则该项目使用npm时源会切换为文件中配置的源
       //打包html的plugin，html-webpack-plugin
-      //在真是发布项目时，发布的是dist文件夹中的内容，但是dist文件夹中如果没有入口文件即本项目中的index.html文件，那么打包的js将毫无意义
+      //在真实发布项目时，发布的是dist文件夹中的内容，但是dist文件夹中如果没有入口文件即本项目中的index.html文件，那么打包的js将毫无意义
       //因此我们需要将index.html文件打包到dist文件夹中，这个时候就可以使用HtmlWebpackPlugin插件，该插件可以为我们做：
       //1.自动生成一个index.html文件（可以指定模板来生成）
       //2.将打包的js文件，自动通过script标签插入到body中
