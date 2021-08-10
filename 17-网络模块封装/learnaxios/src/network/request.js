@@ -51,7 +51,7 @@ export function request2(config) {
     })
 
     //发送真正的网络请求
-    instance(config.baseConfig)
+    instance(config)
       .then(res => {
         resolve(res)
       })
