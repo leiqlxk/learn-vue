@@ -1,6 +1,6 @@
 ## url的hash
 ![img_15.png](img_15.png)    
-    改变url的hash是的url变更，但是页面并不会刷新，即没有去服务器重新请求资源。正常url的变更会使浏览器去服务器重新请求资源并刷新页面，如location.href就会刷新页面。当使用hash方式改变url时，我们可以在前端
+    改变url的hash使得url变更，但是页面并不会刷新，即没有去服务器重新请求资源。正常url的变更会使浏览器去服务器重新请求资源并刷新页面，如location.href就会刷新页面。当使用hash方式改变url时，我们可以在前端
 去监听hash的变化，并维护一个url的映射，则可以实现前端路由。
 ## HTML 5的history
 ![img_17.png](img_17.png)    
