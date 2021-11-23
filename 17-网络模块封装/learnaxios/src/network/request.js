@@ -90,7 +90,7 @@ export function request4(config) {
 request4.interceptors.request.use(
   //成功处理
   config => {
-    console.log(coonfig);
+    console.log(config);
     //可以在此进行处理的东西
     //1.比如config中的一些信息不符合服务器的要求
     //2.比如每次发送网络请求时，都希望在界面中显示一个请求的图标
